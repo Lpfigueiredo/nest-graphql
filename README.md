@@ -1,6 +1,6 @@
 ## Description
 
-CRUD simples utilizando Nest, TypeORM e Postgres.
+CRUD simples utilizando Nest, TypeORM, Postgres e GraphQL.
 
 ## Installation
 
