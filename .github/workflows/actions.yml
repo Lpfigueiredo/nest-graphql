@@ -33,5 +33,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run test:e2e
-      env:
-        NODE_ENV: test
