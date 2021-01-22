@@ -148,7 +148,6 @@ describe('EmailResolver (e2e)', () => {
 
       expect(data).toHaveLength(0);
       expect(result.body.data.removeEmail).toStrictEqual(mockData);
-      console.log(process.env.CI);
     });
   });
 });
