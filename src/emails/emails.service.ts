@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { validateOrReject } from 'class-validator';
 import { Repository } from 'typeorm';
@@ -28,13 +28,20 @@ export class EmailsService {
 
   async update({ email, name }): Promise<Email> {
     const updateEmail = await this.emailRepository.findOne({ email });
+    if (!updateEmail) {
+      throw new NotFoundException();
+    }
     updateEmail.name = name;
     await validateOrReject(updateEmail);
     return await this.emailRepository.save(updateEmail);
   }
 
-  async remove(email: string): Promise<Partial<Email>> {
+  async remove(email: string): Promise<Email> {
+    const deleteEmail = await this.emailRepository.findOne({ email });
+    if (!deleteEmail) {
+      throw new NotFoundException();
+    }
     await this.emailRepository.delete({ email });
-    return { email };
+    return deleteEmail;
   }
 }

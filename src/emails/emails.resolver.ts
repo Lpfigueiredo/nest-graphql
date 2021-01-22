@@ -1,39 +1,43 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { EmailsService } from './emails.service';
-import { Email } from './entities/email.entity';
 import { CreateEmailInput } from './dto/create-email.input';
 import { UpdateEmailInput } from './dto/update-email.input';
+import { EmailSchema } from './schemas/email.schema';
 
-@Resolver(() => Email)
+@Resolver(() => EmailSchema)
 export class EmailsResolver {
   constructor(private readonly emailsService: EmailsService) {}
 
-  @Mutation(() => Email)
+  @Mutation(() => EmailSchema)
   async createEmail(
     @Args('createEmailInput') createEmailInput: CreateEmailInput,
-  ) {
+  ): Promise<EmailSchema> {
     return await this.emailsService.create(createEmailInput);
   }
 
-  @Query(() => [Email], { name: 'emails' })
-  async findAll() {
+  @Query(() => [EmailSchema], { name: 'emails' })
+  async findAll(): Promise<EmailSchema[]> {
     return await this.emailsService.findAll();
   }
 
-  @Query(() => Email, { name: 'email' })
-  async findOne(@Args('email', { type: () => String }) email: string) {
+  @Query(() => EmailSchema, { name: 'email' })
+  async findOne(
+    @Args('email', { type: () => String }) email: string,
+  ): Promise<EmailSchema> {
     return await this.emailsService.findOne(email);
   }
 
-  @Mutation(() => Email)
+  @Mutation(() => EmailSchema)
   async updateEmail(
     @Args('updateEmailInput') updateEmailInput: UpdateEmailInput,
-  ) {
+  ): Promise<EmailSchema> {
     return await this.emailsService.update(updateEmailInput);
   }
 
-  @Mutation(() => Email)
-  async removeEmail(@Args('email', { type: () => String }) email: string) {
+  @Mutation(() => EmailSchema)
+  async removeEmail(
+    @Args('email', { type: () => String }) email: string,
+  ): Promise<EmailSchema> {
     return await this.emailsService.remove(email);
   }
 }
