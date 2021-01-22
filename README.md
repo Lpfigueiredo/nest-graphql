@@ -1,3 +1,5 @@
+![actions](https://github.com/Lpfigueiredo/nest-graphql/workflows/actions/badge.svg)
+
 ## Description
 
 CRUD simples utilizando Nest, TypeORM, Postgres e GraphQL.
