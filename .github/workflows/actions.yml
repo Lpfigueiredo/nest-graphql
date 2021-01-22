@@ -9,9 +9,8 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:latest
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: admin
           POSTGRES_DB: nest-graphql-test
         options: >-
