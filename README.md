@@ -1,4 +1,5 @@
 ![actions](https://github.com/Lpfigueiredo/nest-graphql/workflows/actions/badge.svg)
+[![codecov](https://codecov.io/gh/Lpfigueiredo/nest-graphql/branch/master/graph/badge.svg?token=RJEZ2QITOS)](https://codecov.io/gh/Lpfigueiredo/nest-graphql)
 
 ## Description
 
